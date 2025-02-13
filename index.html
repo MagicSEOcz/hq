@@ -1,0 +1,74 @@
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulačka cen služeb</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; }
+    select, input { width: 100%; padding: 8px; margin-top: 5px; }
+    .result { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kalkulačka cen služeb</h1>
+    <form id="priceCalculator">
+      <div class="form-group">
+        <label for="service">Vyberte službu:</label>
+        <select id="service">
+          <option value="350">Výměna zámku, vložky nebo přídavného zámku (350 Kč)</option>
+          <option value="450">Zabouchnuté dveře - obyčejné kování (450 Kč)</option>
+          <option value="550">Zabouchnuté dveře s bez. kováním (550 Kč)</option>
+          <option value="650">Zabouchnuté bezpečnostní dveře (650 Kč)</option>
+          <option value="750">Zabouchnuté dveře plastové (750 Kč)</option>
+          <option value="850">Zamčené dveře s obyčejným kováním (850 Kč)</option>
+          <option value="1050">Zamčené dveře s bez. kováním (1050 Kč)</option>
+          <option value="1550">Zamčené bezpečnostní dveře (1550 Kč)</option>
+          <option value="1050">Zamčené dveře plastové (1050 Kč)</option>
+          <option value="990">Zamčený přídavný zámek (990 Kč)</option>
+          <option value="1350">Zamčený přídavný bez. zámek (1350 Kč)</option>
+          <option value="550">Zamčené - poštovní schránky, kancelářské a visací zámky (550 Kč)</option>
+          <option value="850">Výměna modulu Cisa, Mottura, Atra (850 Kč)</option>
+          <option value="550">Odstranění vložky zámku bez klíče (550 Kč)</option>
+          <option value="990">Prasklá střelka zámku (990 Kč)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="extraServices">Připočítat doplňkové služby:</label>
+        <div>
+          <input type="checkbox" id="returnTrip" value="250"> Zpětná cesta (250 Kč)<br>
+          <input type="checkbox" id="technicianCall" value="450"> Výjezd technika na objednávku (450 Kč)<br>
+          <input type="checkbox" id="expressService" value="650"> Express výjezd technika do 30 min (650 Kč)<br>
+          <input type="checkbox" id="hourlyWork"> Hodinová práce (500 Kč/hod)<br>
+          <input type="number" id="hourCount" placeholder="Počet hodin" min="1" style="display:none; margin-top: 5px;">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="discount">Vyberte slevu:</label>
+        <select id="discount">
+          <option value="0">Žádná sleva</option>
+          <option value="-0.1">Pro studenty (-10%)</option>
+          <option value="-0.1">Pro seniory (-10%)</option>
+          <option value="-0.1">Pro invalidy (-10%)</option>
+          <option value="-0.2">Pro oběti trestného činu (-20%)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="surcharge">Vyberte příplatek:</label>
+        <select id="surcharge">
+          <option value="0">Žádný příplatek</option>
+          <option value="0.5">Výjezd od 17:00 do 7:00 (+50%)</option>
+          <option value="1">Víkendy a státní svátky (+100%)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="travelCost">Zadejte počet kilometrů (cesta tam a zpět):</label>
+        <input type="number" id="travelCost" placeholder="Počet kilometrů" min="0">
+      </div>
+      <button type="button" onclick="calculatePrice()">Vypočítat cenu</button>
+    </form>
+    <div class="result" id="result">Cena: -</div>
+  </div>
