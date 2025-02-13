@@ -1,4 +1,4 @@
-<script>
+
     document.getElementById('hourlyWork').addEventListener('change', function() {
       const hourCount = document.getElementById('hourCount');
       if (this.checked) {
@@ -31,6 +31,4 @@
       
       document.getElementById('result').textContent = `Cena: ${finalPrice.toFixed(2)} Kč`;
     }
-  </script>
-</body>
-</html>
+  
