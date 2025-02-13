@@ -19,10 +19,10 @@
    <script src="script.js"></script>
   <div class="container">
     <h1>Kalkulačka cen služeb</h1>
-    <form id="priceCalculator">
+   <form id="priceCalculator">
       <div class="form-group">
         <label for="service">Vyberte službu:</label>
-        <select id="service">
+        <select id="service" onchange="calculatePrice()">
           <option value="350">Výměna zámku, vložky nebo přídavného zámku (350 Kč)</option>
           <option value="450">Zabouchnuté dveře - obyčejné kování (450 Kč)</option>
           <option value="550">Zabouchnuté dveře s bez. kováním (550 Kč)</option>
@@ -43,16 +43,16 @@
       <div class="form-group">
         <label for="extraServices">Připočítat doplňkové služby:</label>
         <div>
-          <input type="checkbox" id="returnTrip" value="250"> Zpětná cesta (250 Kč)<br>
-          <input type="checkbox" id="technicianCall" value="450"> Výjezd technika na objednávku (450 Kč)<br>
-          <input type="checkbox" id="expressService" value="650"> Express výjezd technika do 30 min (650 Kč)<br>
-          <input type="checkbox" id="hourlyWork"> Hodinová práce (500 Kč/hod)<br>
-          <input type="number" id="hourCount" placeholder="Počet hodin" min="1" style="display:none; margin-top: 5px;">
+          <input type="checkbox" id="returnTrip" value="250" onchange="calculatePrice()"> Zpětná cesta (250 Kč)<br>
+          <input type="checkbox" id="technicianCall" value="450" onchange="calculatePrice()"> Výjezd technika na objednávku (450 Kč)<br>
+          <input type="checkbox" id="expressService" value="650" onchange="calculatePrice()"> Express výjezd technika do 30 min (650 Kč)<br>
+          <input type="checkbox" id="hourlyWork" onchange="toggleHourlyWork()"> Hodinová práce (500 Kč/hod)<br>
+          <input type="number" id="hourCount" placeholder="Počet hodin" min="1" style="display:none; margin-top: 5px;" oninput="calculatePrice()">
         </div>
       </div>
       <div class="form-group">
         <label for="discount">Vyberte slevu:</label>
-        <select id="discount">
+        <select id="discount" onchange="calculatePrice()">
           <option value="0">Žádná sleva</option>
           <option value="-0.1">Pro studenty (-10%)</option>
           <option value="-0.1">Pro seniory (-10%)</option>
@@ -62,7 +62,7 @@
       </div>
       <div class="form-group">
         <label for="surcharge">Vyberte příplatek:</label>
-        <select id="surcharge">
+        <select id="surcharge" onchange="calculatePrice()">
           <option value="0">Žádný příplatek</option>
           <option value="0.5">Výjezd od 17:00 do 7:00 (+50%)</option>
           <option value="1">Víkendy a státní svátky (+100%)</option>
@@ -70,9 +70,8 @@
       </div>
       <div class="form-group">
         <label for="travelCost">Zadejte počet kilometrů (cesta tam a zpět):</label>
-        <input type="number" id="travelCost" placeholder="Počet kilometrů" min="0">
+        <input type="number" id="travelCost" placeholder="Počet kilometrů" min="0" oninput="calculatePrice()">
       </div>
-      <button type="button" onclick="calculatePrice()">Vypočítat cenu</button>
     </form>
     <div class="result" id="result">Cena: -</div>
   </div>
