@@ -1,13 +1,14 @@
 
-    document.getElementById('hourlyWork').addEventListener('change', function() {
+    function toggleHourlyWork() {
       const hourCount = document.getElementById('hourCount');
-      if (this.checked) {
+      if (document.getElementById('hourlyWork').checked) {
         hourCount.style.display = 'block';
       } else {
         hourCount.style.display = 'none';
         hourCount.value = '';
+        calculatePrice();
       }
-    });
+    }
 
     function calculatePrice() {
       const servicePrice = parseFloat(document.getElementById('service').value);
@@ -31,4 +32,4 @@
       
       document.getElementById('result').textContent = `Cena: ${finalPrice.toFixed(2)} Kč`;
     }
-  
+
